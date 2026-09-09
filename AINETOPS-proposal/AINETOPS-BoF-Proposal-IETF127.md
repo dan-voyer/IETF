@@ -50,7 +50,7 @@ AINETOPS addresses that operational gap. Its scope is the boundary between an AI
 
 The problem occurs when agent-based systems use IETF management protocols, data models, and security mechanisms to observe or change networks. A useful approach must work across vendors while preserving the authority of existing access-control, security, and change-management systems.
 
-Several IETF groups own important parts of the solution, but no single group owns the cross-protocol operational problem of supervising agents acting on networks:
+NMOP and OPSAWG cover related operational work. The case for AINETOPS is a focused work program that keeps the framework, deployment practices, and requirements consistent across agents, tools, and controllers. For example, suspending an agent task must have a clear operational meaning when a controller is already applying a network change. A dedicated group would own that consistency while leaving protocol and data-model extensions with their responsible working groups.
 
 | Concern | Primary venue | AINETOPS relationship |
 |---|---|---|
@@ -63,7 +63,7 @@ Several IETF groups own important parts of the solution, but no single group own
 | Generic agent delegation and interaction traceability | AUDIT, if formed, and related work | Reuses; profiles only where network operations require it |
 | Benchmarking terminology and methodology | BMWG | Coordinates; dispatches benchmarking work |
 | AI-native architectures and research | NMRG and other IRTF groups | Coordinates; does not standardize |
-| Supervision of agents acting on networks | No single existing venue | Proposed AINETOPS focus |
+| Supervision of agents acting on networks | Proposed AINETOPS, subject to the BoF venue decision | Proposed AINETOPS focus |
 
 AINETOPS will not standardize AI algorithms, models, training methods, prompts, chain-of-thought or other internal reasoning, general-purpose agent discovery or communication, MCP, A2A, or autonomous policy that bypasses existing security and change-management controls.
 
