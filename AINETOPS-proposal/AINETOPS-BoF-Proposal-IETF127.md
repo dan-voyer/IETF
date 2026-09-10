@@ -11,7 +11,7 @@
 **BoF chairs:** TBD; to be appointed by the responsible AD  
 **Expected attendance:** 80–120 people  
 **Session length:** 2 hours  
-**Conflicts to avoid:** NMOP, OPSAWG, NETCONF, NETMOD, ANIMA, BMWG, NMRG, DAWN, AGENTPROTO, and AUDIT  
+**Conflicts to avoid:** NMOP, OPSAWG, NETCONF, NETMOD, ANIMA, BMWG, NMRG, DAWN, and AGENTPROTO  
 **Area Director support:** To be confirmed before submission
 
 ## Information for the IAB and IESG
@@ -26,11 +26,11 @@ What is missing is a common operational approach for supervising an AI-based age
 
 ### What changes to existing protocols or practices are required?
 
-The initial work will define the operational framework, practices, and requirements before assuming a protocol or data-model solution. If the resulting gap analysis identifies a need to extend an existing protocol or YANG model, that work will be dispatched to the group responsible for it.
+The proposed work will define YANG data models, operations, and notifications for agent lifecycle management and task supervision, using existing management protocols and security mechanisms. Requirements and gap analysis will guide model development in parallel. Extensions to existing protocols or models owned by other working groups will be developed with those groups.
 
 ### What entirely new protocols or practices are required?
 
-No new protocol is proposed in the initial charter. The proposed outputs are an operational framework, a Best Current Practice document, and a requirements and gap analysis. The working group would need to be rechartered before taking on protocol or YANG-module development itself.
+The initial charter commits to two Standards Track specifications: agent operational state and lifecycle, and agent task supervision and intervention. These will define interoperable YANG models using existing management protocols; no new transport or general-purpose agent protocol is proposed. An operational framework and requirements document and implementation-informed operational guidance will support this work.
 
 ### What implementation experience exists?
 
@@ -44,38 +44,46 @@ Consider an operator using agents and management tools from several vendors. The
 
 Today, those controls and records are implementation-specific. Existing network-management protocols expose the network, but they do not by themselves provide a common way to supervise the autonomous, multi-step behavior of the system using them. This makes safe multi-vendor deployment difficult and weakens operational accountability when something goes wrong.
 
+AINETOPS will standardize the management interface between a supervising management system and network-management agents from different vendors. The interface will provide consistent agent state, task operations, and notifications using existing IETF management protocols.
+
 AINETOPS addresses that operational gap. Its scope is the boundary between an AI-based agent and the network-management environment—not the agent's internal model, prompts, training, or reasoning method.
 
 ## Why the IETF, and why a new working group?
 
 The problem occurs when agent-based systems use IETF management protocols, data models, and security mechanisms to observe or change networks. A useful approach must work across vendors while preserving the authority of existing access-control, security, and change-management systems.
 
-NMOP and OPSAWG cover related operational work. The case for AINETOPS is a focused work program that keeps the framework, deployment practices, and requirements consistent across agents, tools, and controllers. For example, suspending an agent task must have a clear operational meaning when a controller is already applying a network change. A dedicated group would own that consistency while leaving protocol and data-model extensions with their responsible working groups.
+NMOP and OPSAWG cover related operational work. The case for AINETOPS is a focused work program that keeps the management models, operational framework, and deployment practices consistent across agents, tools, and controllers. For example, suspending an agent task must have a clear operational meaning when a controller is already applying a network change. A dedicated group would own that consistency while developing the scoped agent-supervision models and coordinating changes to existing protocols and models with their responsible working groups.
 
 | Concern | Primary venue | AINETOPS relationship |
 |---|---|---|
-| Network-management protocols and YANG models | NETCONF, NETMOD, and relevant model-owning WGs | Identifies requirements; dispatches extensions |
+| Existing network-management protocols and models | NETCONF, NETMOD, and relevant model-owning WGs | Reuses mechanisms; coordinates extensions and YANG review |
 | Operator requirements and management integration | NMOP | Coordinates and uses operational experience |
 | Cross-cutting operational guidance | OPSAWG | Coordinates and avoids duplicate documents |
 | Agent discovery and naming | DAWN | Reuses |
 | Agent-to-agent communication | AGENTPROTO | Reuses |
 | Workload identity, authorization, and delegation | WIMSE, OAuth, and relevant Security-area WGs | Reuses |
-| Generic agent delegation and interaction traceability | AUDIT, if formed, and related work | Reuses; profiles only where network operations require it |
+| Generic agent delegation and interaction traceability | Related Security-area work, including the AUDIT effort | Coordinates with proponents; reuses applicable mechanisms without depending on a future AUDIT WG |
 | Benchmarking terminology and methodology | BMWG | Coordinates; dispatches benchmarking work |
 | AI-native architectures and research | NMRG and other IRTF groups | Coordinates; does not standardize |
-| Supervision of agents acting on networks | Proposed AINETOPS, subject to the BoF venue decision | Proposed AINETOPS focus |
+| Supervision of agents acting on networks | Proposed AINETOPS, subject to the BoF venue decision | Develops agent-supervision YANG models and supporting guidance |
 
 AINETOPS will not standardize AI algorithms, models, training methods, prompts, chain-of-thought or other internal reasoning, general-purpose agent discovery or communication, MCP, A2A, or autonomous policy that bypasses existing security and change-management controls.
 
 ## Proposed working-group deliverables
 
-1. **AINETOPS Operational Framework** — An Informational document defining the operational problem, terminology, roles, boundaries, and the relationship between AI-based agents and existing network-management systems.
+1. **Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter.
 
-2. **Operational Practices for Network-Management Agents** — A Best Current Practice document covering admission, least privilege, task supervision, observability, intervention, failure containment, recovery, auditability, human oversight, and retirement.
+2. **Agent Operational State and Lifecycle** — A Standards Track specification defining YANG data models for supported management capabilities, administrative and operational state, and lifecycle management of network-management agents. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
 
-3. **Requirements and Gap Analysis** — An Informational document identifying requirements placed on existing IETF management protocols and data models when they are used by AI-based agents. Protocol and data-model extensions will be dispatched to the responsible working groups.
+3. **Agent Task Supervision and Intervention** — A Standards Track specification defining YANG data models, operations, and notifications for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination. It will define intervention acknowledgements and outcomes, including incomplete or continuing network operations, and references that correlate tasks with resulting actions.
 
-The ICON problem-statement and requirements drafts, the network-management-agent drafts discussed in NMOP, and the AINETOPS use-case inventory are potential inputs. Listing a draft as an input does not imply working-group adoption.
+4. **Operational Guidance** — An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by implementation and operational experience.
+
+Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The specifications will distinguish the requested intervention, its acceptance or rejection, and its observed outcome, and report operations that remain in progress or whose outcome is unknown. They will not imply automatic rollback.
+
+The initial charter includes Standards Track YANG models for agent operational state and lifecycle, and for task supervision and intervention. AINETOPS will develop these models in coordination with NETMOD, NETCONF, NMOP, and relevant model-owning working groups, reusing existing models and mechanisms where applicable. Changes to existing management protocols or models owned by other working groups will be developed with those groups. New transport protocols, general-purpose agent protocols, and work beyond this agent-supervision scope require rechartering.
+
+The ICON problem-statement and requirements drafts, the [agent lifecycle management draft](https://datatracker.ietf.org/doc/draft-sun-nmop-agent-lifecycle-management/), the [NMA A2U YANG draft](https://datatracker.ietf.org/doc/draft-zhao-nmop-nma-a2u-yang/), and the AINETOPS use-case inventory are potential inputs. The BoF will discuss their fit to the two Standards Track work items; naming them does not endorse their complete scope or design. Listing a draft as an input does not imply working-group adoption.
 
 Draft charter: https://github.com/dan-voyer/IETF/blob/main/AINETOPS-proposal/AINETOPS-Proposed-Charter.md
 
@@ -88,8 +96,9 @@ Draft charter: https://github.com/dan-voyer/IETF/blob/main/AINETOPS-proposal/AIN
 | 20 min | Production or trial deployment experience | Operator(s) |
 | 10 min | Existing IETF building blocks and scope boundaries | Chairs |
 | 10 min | IETF 126 Hackathon implementation report | Implementers |
-| 15 min | Proposed charter, deliverables, and candidate inputs | Proponents |
-| 30 min | Charter discussion and resolution of open issues | Chairs |
+| 10 min | Proposed charter and Standards Track deliverables | Proponents |
+| 15 min | Candidate YANG models and implementation interest | Authors and implementers |
+| 20 min | Charter discussion and resolution of open issues | Chairs |
 | 10 min | Sense of the room and next steps | Chairs and AD |
 
 The agenda puts operator experience before proposed solutions and discusses the boundaries with adjacent work before the deliverables.
@@ -100,10 +109,10 @@ The agenda puts operator experience before proposed solutions and discusses the 
 2. Is there a clear need for vendor-neutral operational guidance or interoperability?
 3. Is the IETF the right venue?
 4. Is the proposed scope narrow enough, and are the boundaries with existing groups clear?
-5. Are the proposed deliverables appropriate?
+5. Is there support for the two proposed Standards Track work items: agent operational state/lifecycle and task supervision/intervention?
 6. Should a working group be formed with this charter?
 7. Who is willing to author or review the work?
-8. Who is willing to implement or provide operational experience?
+8. Who will implement the proposed models, participate in interoperability testing, or provide operational experience?
 
 These questions should be posted to the mailing list before the BoF and refined with the chairs and responsible AD, following RFC 5434.
 
@@ -125,6 +134,6 @@ Before submission:
 - Confirm AD support and the submission path with Mahesh.
 - Identify credible chair candidates privately for consideration by the AD.
 - Confirm at least two named operator or implementer presenters with deployment experience.
-- Coordinate with the proponents of AUDIT and other adjacent agent work.
-- Confirm the authors' support before naming individual drafts as proposed inputs.
+- Coordinate with proponents of related security and agent work, including AUDIT. The AUDIT BoF request was declined; it is not a scheduling conflict or an established WG dependency.
+- Confirm candidate-model authors and implementers for the two Standards Track work items, and coordinate ownership with the relevant chairs and ADs.
 - Confirm the expected attendance and session-conflict list.
