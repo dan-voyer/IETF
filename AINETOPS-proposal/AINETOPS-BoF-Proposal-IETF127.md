@@ -105,14 +105,20 @@ The agenda puts operator experience before proposed solutions and discusses the 
 
 ## Questions for the room
 
-1. Is the operational problem well understood, solvable, and worth solving?
-2. Is there a clear need for vendor-neutral operational guidance or interoperability?
-3. Is the IETF the right venue?
-4. Is the proposed scope narrow enough, and are the boundaries with existing groups clear?
-5. Is there support for the two proposed Standards Track work items: agent operational state/lifecycle and task supervision/intervention?
-6. Should a working group be formed with this charter?
-7. Who is willing to author or review the work?
-8. Who will implement the proposed models, participate in interoperability testing, or provide operational experience?
+1. Is there a clear operational need for interoperable supervision of network-management agents across vendors, including reporting their actions and intervening in running tasks?
+2. Is the proposed boundary—between supervising management systems and network-management agents—clear and sufficiently focused?
+3. Is there support for developing each of the following Standards Track work items?
+
+   - Agent operational state and lifecycle management.
+   - Agent task supervision and intervention.
+
+4. Is YANG, used with existing IETF management protocols, an appropriate initial approach for these work items?
+5. Should this work proceed in a dedicated AINETOPS working group, or within an existing working group such as NMOP or OPSAWG?
+6. Who is willing to contribute text or review the specifications, and for which work item?
+7. Who is willing to implement the models and participate in interoperability testing?
+8. Which operators can contribute deployment scenarios, requirements, and implementation feedback?
+
+The chairs should distinguish objections to the problem, scope, technical approach, and organizational venue. Support for the two Standards Track work items should be assessed separately, and specific contributor commitments should be recorded.
 
 These questions should be posted to the mailing list before the BoF and refined with the chairs and responsible AD, following RFC 5434.
 
