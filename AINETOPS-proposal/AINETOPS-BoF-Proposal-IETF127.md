@@ -85,6 +85,8 @@ The specifications will define the YANG data models, operations, notifications, 
 
 The intended result is a common specification that operators can reference in procurement and that vendors can implement and test against. Operator deployment scenarios and implementation experience will guide the work, with new definitions limited to demonstrated interoperability needs.
 
+**Open question for the BoF:** Do existing mechanisms allow a supervising system to determine consistently across implementations which network operations have completed, which remain in progress, and which outcomes are unknown after an agent task is suspended or terminated? If not, what additional information or behavior requires standardization?
+
 ## Proposed working-group deliverables
 
 1. **Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter.
