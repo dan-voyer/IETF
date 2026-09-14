@@ -26,11 +26,11 @@ What is missing is a common operational approach for supervising an AI-based age
 
 ### What changes to existing protocols or practices are required?
 
-The proposed work will define YANG data models, operations, and notifications for agent lifecycle management and task supervision, using existing management protocols and security mechanisms. Requirements and gap analysis will guide model development in parallel. Extensions to existing protocols or models owned by other working groups will be developed with those groups.
+The proposed work will define data models, operations, notifications, and required behavior for agent lifecycle management and task supervision, using existing protocols and security mechanisms. Requirements and gap analysis will guide model development in parallel. Extensions to existing protocols or models owned by other working groups will be developed with those groups.
 
 ### What entirely new protocols or practices are required?
 
-The initial charter commits to two Standards Track specifications: agent operational state and lifecycle, and agent task supervision and intervention. These will define interoperable YANG models using existing management protocols; no new transport or general-purpose agent protocol is proposed. An operational framework and requirements document and implementation-informed operational guidance will support this work.
+The initial charter commits to two Standards Track specifications: agent operational state and lifecycle, and agent task supervision and intervention. Each will define at least one mandatory interoperable binding using existing protocols; no new transport or general-purpose agent protocol is proposed. An operational framework and requirements document and implementation-informed operational guidance will support this work.
 
 ### What implementation experience exists?
 
@@ -44,7 +44,7 @@ Consider an operator using agents and management tools from several vendors. The
 
 Today, those controls and records are implementation-specific. Existing network-management protocols expose the network, but they do not by themselves provide a common way to supervise the autonomous, multi-step behavior of the system using them. This makes safe multi-vendor deployment difficult and weakens operational accountability when something goes wrong.
 
-AINETOPS will standardize the management interface between a supervising management system and network-management agents from different vendors. The interface will provide consistent agent state, task operations, and notifications using existing IETF management protocols.
+AINETOPS will standardize the management interface between a supervising management system and network-management agents from different vendors. The interface will provide consistent agent state, task operations, and notifications using bindings to existing protocols.
 
 AINETOPS addresses that operational gap. Its scope is the boundary between an AI-based agent and the network-management environment—not the agent's internal model, prompts, training, or reasoning method.
 
@@ -65,7 +65,7 @@ NMOP and OPSAWG cover related operational work. The case for AINETOPS is a focus
 | Generic agent delegation and interaction traceability | Related Security-area work, including the AUDIT effort | Coordinates with proponents; reuses applicable mechanisms without depending on a future AUDIT WG |
 | Benchmarking terminology and methodology | BMWG | Coordinates; dispatches benchmarking work |
 | AI-native architectures and research | NMRG and other IRTF groups | Coordinates; does not standardize |
-| Supervision of agents acting on networks | Proposed AINETOPS, subject to the BoF venue decision | Develops agent-supervision YANG models and supporting guidance |
+| Supervision of agents acting on networks | Proposed AINETOPS, subject to the BoF venue decision | Develops agent-supervision specifications and supporting guidance |
 
 AINETOPS will not standardize AI algorithms, models, training methods, prompts, chain-of-thought or other internal reasoning, general-purpose agent discovery or communication, MCP, A2A, or autonomous policy that bypasses existing security and change-management controls.
 
@@ -81,7 +81,7 @@ The initial standards work will specify how a supervising management system can:
 - Identify operations that remain in progress after a task is suspended or terminated.
 - Report confirmed network changes, failures, and outcomes that remain unknown.
 
-The specifications will define the YANG data models, operations, notifications, and required behavior needed for interoperable implementations. They will reuse existing task, identity, authorization, and telemetry mechanisms, with explicit mappings where applicable.
+The specifications will define the data models, operations, notifications, protocol bindings, and required behavior needed for interoperable implementations. They will reuse existing task, identity, authorization, and telemetry mechanisms, with explicit mappings where applicable.
 
 The intended result is a common specification that operators can reference in procurement and that vendors can implement and test against. Operator deployment scenarios and implementation experience will guide the work, with new definitions limited to demonstrated interoperability needs.
 
@@ -91,15 +91,15 @@ The intended result is a common specification that operators can reference in pr
 
 1. **Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter.
 
-2. **Agent Operational State and Lifecycle** — A Standards Track specification defining YANG data models for supported management capabilities, administrative and operational state, and lifecycle management of network-management agents. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
+2. **Agent Operational State and Lifecycle** — A Standards Track specification defining supported management capabilities, administrative and operational state, and lifecycle management of network-management agents. YANG is the leading candidate for the data model, with the choice evaluated against operator requirements and implementation experience. The specification will include at least one mandatory interoperable binding to an existing protocol. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
 
-3. **Agent Task Supervision and Intervention** — A Standards Track specification defining YANG data models, operations, and notifications for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination. It will define intervention acknowledgements and outcomes, including incomplete or continuing network operations, and references that correlate tasks with resulting actions.
+3. **Agent Task Supervision and Intervention** — A Standards Track specification defining data models, operations, notifications, and required behavior for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination. It will define intervention acknowledgements and outcomes, including incomplete or continuing network operations, and references that correlate tasks with resulting actions. The work will compare YANG-based management, reuse of existing task protocols, and an HTTP/JSON interface against these requirements. The specification will include at least one mandatory interoperable binding, selected during the initial work, with new definitions limited to demonstrated gaps.
 
 4. **Operational Guidance** — An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by implementation and operational experience.
 
 Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The specifications will distinguish the requested intervention, its acceptance or rejection, and its observed outcome, and report operations that remain in progress or whose outcome is unknown. They will not imply automatic rollback.
 
-The initial charter includes Standards Track YANG models for agent operational state and lifecycle, and for task supervision and intervention. AINETOPS will develop these models in coordination with NETMOD, NETCONF, NMOP, and relevant model-owning working groups, reusing existing models and mechanisms where applicable. Changes to existing management protocols or models owned by other working groups will be developed with those groups. New transport protocols, general-purpose agent protocols, and work beyond this agent-supervision scope require rechartering.
+The initial charter includes Standards Track specifications for agent operational state and lifecycle, and for task supervision and intervention. The choice of data-model language and protocol binding will be evaluated separately for each deliverable, without deferring standards work to a future recharter. AINETOPS will develop these specifications in coordination with NETMOD, NETCONF, NMOP, and relevant model-owning working groups, reusing existing models and mechanisms where applicable. Changes to existing management protocols or models owned by other working groups will be developed with those groups. New transport protocols, general-purpose agent protocols, and work beyond this agent-supervision scope require rechartering.
 
 The ICON problem-statement and requirements drafts, the [agent lifecycle management draft](https://datatracker.ietf.org/doc/draft-sun-nmop-agent-lifecycle-management/), the [NMA A2U YANG draft](https://datatracker.ietf.org/doc/draft-zhao-nmop-nma-a2u-yang/), and the AINETOPS use-case inventory are potential inputs. The BoF will discuss their fit to the two Standards Track work items; naming them does not endorse their complete scope or design. Listing a draft as an input does not imply working-group adoption.
 
@@ -115,7 +115,7 @@ Draft charter: https://github.com/dan-voyer/IETF/blob/main/AINETOPS-proposal/AIN
 | 10 min | Existing IETF building blocks and scope boundaries | Chairs |
 | 10 min | IETF 126 Hackathon implementation report | Implementers |
 | 10 min | Proposed charter and Standards Track deliverables | Proponents |
-| 15 min | Candidate YANG models and implementation interest | Authors and implementers |
+| 15 min | Candidate models, protocol bindings, and implementation interest | Authors and implementers |
 | 20 min | Charter discussion and resolution of open issues | Chairs |
 | 10 min | Sense of the room and next steps | Chairs and AD |
 
@@ -130,10 +130,10 @@ The agenda puts operator experience before proposed solutions and discusses the 
    - Agent operational state and lifecycle management.
    - Agent task supervision and intervention.
 
-4. Is YANG, used with existing IETF management protocols, an appropriate initial approach for these work items?
+4. Is YANG an appropriate leading candidate for agent operational state and lifecycle? For task supervision and intervention, which approach best meets the requirements: YANG-based management, reuse of an existing task protocol, or an HTTP/JSON interface? Each work item will include at least one mandatory interoperable binding.
 5. Should this work proceed in a dedicated AINETOPS working group, or within an existing working group such as NMOP or OPSAWG?
 6. Who is willing to contribute text or review the specifications, and for which work item?
-7. Who is willing to implement the models and participate in interoperability testing?
+7. Who is willing to implement the specifications and participate in interoperability testing?
 8. Which operators can contribute deployment scenarios, requirements, and implementation feedback?
 
 The chairs should distinguish objections to the problem, scope, technical approach, and organizational venue. Support for the two Standards Track work items should be assessed separately, and specific contributor commitments should be recorded.
