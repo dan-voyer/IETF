@@ -69,6 +69,22 @@ NMOP and OPSAWG cover related operational work. The case for AINETOPS is a focus
 
 AINETOPS will not standardize AI algorithms, models, training methods, prompts, chain-of-thought or other internal reasoning, general-purpose agent discovery or communication, MCP, A2A, or autonomous policy that bypasses existing security and change-management controls.
 
+## What needs to be standardized?
+
+Existing agent protocols and open-source automation platforms provide task management, lifecycle controls, and observability. AINETOPS will build on this experience to define a common management interface and operational semantics that operators can use across independently developed products, without depending on a particular automation platform.
+
+The initial standards work will specify how a supervising management system can:
+
+- Determine an agent’s operational state and supported supervision capabilities.
+- Associate agent tasks with the network operations and resources they affect.
+- Request intervention and distinguish acceptance of the request from its actual effect.
+- Identify operations that remain in progress after a task is suspended or terminated.
+- Report confirmed network changes, failures, and outcomes that remain unknown.
+
+The specifications will define the YANG data models, operations, notifications, and required behavior needed for interoperable implementations. They will reuse existing task, identity, authorization, and telemetry mechanisms, with explicit mappings where applicable.
+
+The intended result is a common specification that operators can reference in procurement and that vendors can implement and test against. Operator deployment scenarios and implementation experience will guide the work, with new definitions limited to demonstrated interoperability needs.
+
 ## Proposed working-group deliverables
 
 1. **Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter.
