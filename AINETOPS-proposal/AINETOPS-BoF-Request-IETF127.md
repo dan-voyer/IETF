@@ -157,61 +157,53 @@ If not, what additional information or behavior requires standardization?
 
 ## Proposed Working-Group Deliverables
 
-### 1. Operational Framework and Requirements
+The work is organized into three groups: operational experience and requirements, Standards Track specifications, and operational guidance. These activities will proceed in parallel, with operational evidence and implementation feedback informing the specifications as they develop.
 
-**Intended status:** Informational
+### 1. Operational experience and requirements
 
-Define the operational problem, roles, management boundaries, terminology, and requirements supporting the Standards Track work.
+**A. Report on existing operational approaches**
 
-The document will identify mechanisms that can be reused and interoperability gaps that require standardization. This work will proceed alongside the Standards Track specifications rather than serving as a prerequisite that postpones them to a later recharter.
+Collect and document how network operators, vendors, and open-source developers deploy or plan to use AI-based agents in network management.
 
-### 2. Agent Operational State and Lifecycle
+Contributions will use a short common template covering the operational problem, deployment stage, participating components, management interfaces and boundaries, applicable policies, and experience with existing mechanisms or workarounds. Reports will distinguish production experience, trials, and planned capabilities.
 
-**Intended status:** Standards Track
+The collection will preserve contributors’ terminology and architectural choices without requiring a unified taxonomy. Inclusion does not imply working-group endorsement.
 
-Define supported management capabilities, administrative and operational state, and lifecycle management for network-management agents.
+**B. Survey of operational experience and needs**
 
-YANG is a leading candidate for this data model because the work sits at a network-management boundary, but the choice will be validated against operator requirements and implementation experience.
+Use the initial reports in 1.A and existing survey work to develop and refine a structured questionnaire for broader participation by network operators, vendors, and open-source developers.
 
-The specification will include at least one mandatory interoperable binding to an existing protocol.
+The survey will collect comparable responses about deployments, plans, supervision mechanisms, integration difficulties, and unmet needs. It will distinguish observed problems from anticipated needs and capture cases where existing mechanisms are sufficient.
 
-The work will reuse existing identity and access-control mechanisms and will not define general-purpose agent discovery or internal AI-model management.
+A summary will describe the respondent population, collection method, findings, and limitations. The reports and survey results will be maintained as supporting material; separate RFC publication is not required.
 
-### 3. Agent Task Supervision and Intervention
+**C. Operational Framework and Requirements**
 
-**Intended status:** Standards Track
+An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. Drawing on the reports and survey findings, it will identify existing mechanisms to reuse and interoperability gaps requiring additional specification.
 
-Define the information models/data models, operations, notifications, and required behavior needed to supervise a network-management agent task.
+This document will develop alongside the specifications. Completion of the reports or survey is not a prerequisite for starting Standards Track work.
 
-The work includes:
+### 2. Standards Track specifications
 
-- task identity, objective, scope, and constraints;
-- progress and outcome reporting;
-- approval and intervention;
-- suspension, resumption, and termination;
-- intervention acknowledgement and resulting operational state;
-- reporting of incomplete, continuing, failed, or outcome-unknown network operations; and
-- references needed to correlate tasks with resulting actions and network changes.
+**A. Agent Operational State and Lifecycle**
 
-The working group will evaluate YANG-based management, reuse of existing task protocols, and an HTTP/JSON interface against the requirements.
+A Standards Track specification defining supported management capabilities, administrative and operational state, and lifecycle management of network-management agents.
 
-The specification will include at least one mandatory interoperable binding selected during the initial work. New definitions will be limited to demonstrated interoperability gaps.
+YANG is the leading candidate for the data model, with the choice evaluated against operator requirements and implementation experience. The specification will include at least one mandatory interoperable binding to an existing protocol. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
 
-### 4. Operational Guidance
+**B. Agent Task Supervision and Intervention**
 
-**Intended status:** Informational
+A Standards Track specification defining data models, operations, notifications, and required behavior for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination.
 
-Provide implementation- and deployment-informed guidance covering:
+It will distinguish an intervention request, its acceptance or rejection, and its observed effect. It will report associated network operations that have completed, remain in progress, have failed, or have unknown outcomes, and provide references correlating tasks with resulting actions and network changes.
 
-- least privilege;
-- human oversight;
-- failure containment;
-- recovery;
-- auditability;
-- safe intervention semantics; and
-- incremental deployment.
+The work will evaluate YANG-based management, reuse of existing task protocols, and an HTTP/JSON interface against the requirements. The specification will include at least one mandatory interoperable binding selected during the initial work. New definitions will be limited to demonstrated interoperability gaps.
 
-Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The specifications and guidance will distinguish the requested intervention, its acceptance or rejection, and its observed outcome. They will not imply automatic rollback.
+### 3. Operational guidance
+
+An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by operational reports, survey findings, and implementation experience.
+
+The guidance will explain how to apply the supervision mechanisms defined in Group 2, including their limitations. Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The guidance will address continuing operations and uncertain outcomes without implying automatic rollback.
 
 ## Proposed Agenda — 120 Minutes
 
