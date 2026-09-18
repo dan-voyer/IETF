@@ -71,15 +71,25 @@ AINETOPS will not standardize AI algorithms, models, training methods, prompts, 
 
 ## Proposed working-group deliverables
 
-1. **Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter.
+### Overview
 
-2. **Agent Operational State and Lifecycle** — A Standards Track specification defining YANG data models for supported management capabilities, administrative and operational state, and lifecycle management of network-management agents. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
+ The possible WG deliverables are split into three parts. The first part alone (1.) might be a possible first charter round scope without standard track deliverables. This might be possible to charter even without the need of complete IETF buy in (AD chartered). (2.) adds the standard deliverables based on YANG. (3.) adds a possible longer-term experience based item.
 
-3. **Agent Task Supervision and Intervention** — A Standards Track specification defining YANG data models, operations, and notifications for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination. It will define intervention acknowledgements and outcomes, including incomplete or continuing network operations, and references that correlate tasks with resulting actions.
+### Deliverabel groups
 
-4. **Operational Guidance** — An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by implementation and operational experience.
+1. ** (A) Report of existing operational models for agentic network management** — The report collects and documents existing models, plans and experiences for the use of agentic components in network management as deployed or planned by network operators and vendors or developers (open source) of agentic and network management component. It attempts to include the operational problem, roles and management boundary/policies of interest to network operators, but does not attempt to bring all reports into a unified taxonomy - it simply is a collection of reports collected. 
 
-Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The specifications will distinguish the requested intervention, its acceptance or rejection, and its observed outcome, and report operations that remain in progress or whose outcome is unknown. They will not imply automatic rollback.
+1. ** (B) Survey of operational models for agentic network management** — The output of 1.(A) is used to derive a more comprehensive survey, questioning experience and plans of network operators and vendors . It is intended to be distributed to more vendors/operators and allows to collect consistent ansswers from them that can be compared and summarized similar to other typical surveys done in IETF for example understanding adoption of technologies.
+
+1. ** (C) Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter. This is derived from taking the input of 1.(A) and 1.(B).
+
+2. ** (A) Agent Operational State and Lifecycle** — A Standards Track specification defining YANG data models for supported management capabilities, administrative and operational state, and lifecycle management of network-management agents. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
+
+2. ** (B) Agent Task Supervision and Intervention** — A Standards Track specification defining YANG data models, operations, and notifications for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination. It will define intervention acknowledgements and outcomes, including incomplete or continuing network operations, and references that correlate tasks with resulting actions.
+
+3. ** Operational Guidance ** — An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by implementation and operational experience.  Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The specifications will distinguish the requested intervention, its acceptance or rejection, and its observed outcome, and report operations that remain in progress or whose outcome is unknown. They will not imply automatic rollback.
+
+### Explanations
 
 The initial charter includes Standards Track YANG models for agent operational state and lifecycle, and for task supervision and intervention. AINETOPS will develop these models in coordination with NETMOD, NETCONF, NMOP, and relevant model-owning working groups, reusing existing models and mechanisms where applicable. Changes to existing management protocols or models owned by other working groups will be developed with those groups. New transport protocols, general-purpose agent protocols, and work beyond this agent-supervision scope require rechartering.
 
