@@ -1,4 +1,4 @@
-# AI-enabled Network Operations Operator Survey
+# Survey of Agentic Network-Management Experience and Needs
 
 Prepared to inform the proposed AINETOPS BoF at IETF 127 | September 2026
 
@@ -20,6 +20,7 @@ The core survey contains 19 questions. Section E is optional background. Complet
 
 - [ ] Network operator, including an ISP, mobile, enterprise, or cloud network operator
 - [ ] Vendor or system integrator
+- [ ] Open-source developer or maintainer
 - [ ] Research or academic organization
 - [ ] Other: __________
 - [ ] Prefer not to say
@@ -54,7 +55,7 @@ The core survey contains 19 questions. Section E is optional background. Complet
 - [ ] No deployment or current plan
 - [ ] Don't know
 
-**Routing:** If no agent is deployed, or you do not know, skip Section B and continue to C1. In Section C, report expected needs separately from observed problems. Everyone may answer Section D.
+**Routing:** If no agent is deployed, or you do not know, skip Section B and continue to C1. In Section C, report expected needs separately from observed problems and skip C4–C5, which concern deployed agents. Production and pilot respondents may answer all of Section C. Everyone may answer Section D.
 
 ## B. Current agent deployment
 
@@ -119,16 +120,16 @@ These may occur at different points in the same path; for example, an agent may 
 
 ### C1. What is the status of each supervision need in your environment?
 
-Choose “Expected need” only when you have no deployment evidence. “Observed gap” means a problem encountered in production or a pilot, even if a workaround exists.
+Report the current status. Choose “Met through existing mechanisms” when no custom supervision integration is needed, and “Met through custom integration” when adapters or workarounds adequately meet the need. Choose “Unresolved observed gap” when a need remains unmet in production or a pilot, including after a partial workaround. Choose “Expected need” only when you have no deployment evidence.
 
-| Need | Met adequately today | Observed gap | Expected need, not tested | Not needed or applicable | Don't know |
-| --- | --- | --- | --- | --- | --- |
-| Read agent capabilities and operational state consistently across products | ○ | ○ | ○ | ○ | ○ |
-| Admit, suspend, update, and retire agents through consistent management interfaces | ○ | ○ | ○ | ○ | ○ |
-| Track a task and associate it with affected resources and downstream operations | ○ | ○ | ○ | ○ | ○ |
-| Approve, suspend, resume, or terminate a task with a clear acknowledgement and outcome | ○ | ○ | ○ | ○ | ○ |
-| Determine which downstream operations completed, remain active, failed, or have unknown outcomes | ○ | ○ | ○ | ○ | ○ |
-| Correlate actions and observed network changes with the original task | ○ | ○ | ○ | ○ | ○ |
+| Need | Met through existing mechanisms | Met through custom integration | Unresolved observed gap | Expected need, not tested | Not needed or applicable | Don't know |
+| --- | --- | --- | --- | --- | --- | --- |
+| Read agent capabilities and operational state consistently across products | ○ | ○ | ○ | ○ | ○ | ○ |
+| Admit, suspend, update, and retire agents through consistent management interfaces | ○ | ○ | ○ | ○ | ○ | ○ |
+| Track a task and associate it with affected resources and downstream operations | ○ | ○ | ○ | ○ | ○ | ○ |
+| Approve, suspend, resume, or terminate a task with a clear acknowledgement and outcome | ○ | ○ | ○ | ○ | ○ | ○ |
+| Determine which downstream operations completed, remain active, failed, or have unknown outcomes | ○ | ○ | ○ | ○ | ○ | ○ |
+| Correlate actions and observed network changes with the original task | ○ | ○ | ○ | ○ | ○ | ○ |
 
 ### C2. Have differences between products' agent lifecycle or task-supervision interfaces required custom integration?
 
@@ -139,16 +140,18 @@ Choose “Expected need” only when you have no deployment evidence. “Observe
 - [ ] No; we have not needed to integrate independent products
 - [ ] Don't know
 
-### C3. Describe one observed gap, if any. Optional; skip if you have not encountered one.
+### C3. Describe one successful use of existing mechanisms or one observed gap. Optional; skip if you have no direct experience to report.
 
 - Production or pilot: __________
 - Operation you were attempting: __________
-- Interface between components where the problem occurred: __________
-- Existing protocol, model, product feature, or framework tried: __________
-- What was missing or interpreted differently: __________
-- Workaround and operational impact: __________
+- Interface between components involved: __________
+- Existing protocol, model, product feature, or framework used: __________
+- What worked, or what was missing or interpreted differently: __________
+- Any custom integration or workaround, its operational impact, and remaining limitations: __________
 
-Please avoid sensitive incident details. A missing product implementation and a missing specification are different findings; identify which you believe applies, if known.
+Please avoid sensitive incident details. For a gap, distinguish a missing product implementation from a missing specification, if known. Successful examples help identify mechanisms the work can reuse.
+
+**Routing:** If no agent is deployed, or you do not know its deployment status, continue to Section D. C4–C5 concern production or pilot deployments.
 
 ### C4. After suspending or terminating a task, can your supervising system determine the state of downstream network operations?
 
@@ -213,9 +216,14 @@ These approaches can overlap. Optional: distinguish what you already support fro
 
 Optional explanation: __________
 
-### D4. What contribution could your organization make to each work item?
+### D4. What contributions could you or your organization make?
 
-For each cell, indicate **committed**, **interested but unconfirmed**, **none**, or **unknown**. Do not report an organizational commitment without authority to make it.
+For each entry below, indicate **committed**, **interested but unconfirmed**, **none**, or **unknown**, and whether you are answering for yourself or your organization. Do not report an organizational commitment without authority to make it.
+
+- Contribute an operational report: __________
+- Help refine the survey questionnaire: __________
+
+For the Standards Track work items:
 
 | Work item | Supply cases or requirements | Write or review specifications | Implement | Join interoperability testing | Evaluate deployment |
 | --- | --- | --- | --- | --- | --- |
@@ -292,4 +300,4 @@ Count running instances, rather than model types or cumulative task executions.
 
 Thank you for contributing. If you would like to discuss a case study or participate further, contact the organizers separately through [the AINETOPS mailing list](mailto:ainetops@ietf.org). Mailing-list messages are public; do not send confidential responses there.
 
-Organizers should report the sample size and recruitment method, distinguish operators from vendors and researchers, and separate production evidence, pilot experience, and expectations. Report the number answering each question and retain “not applicable” and “don't know” responses. Avoid publishing small identifiable subgroups or identifiable free-text responses. Survey findings are input to the BoF discussion, not a determination of IETF consensus or proof that a new working group is required.
+Organizers should report the sample size and recruitment method, distinguish operators, vendors, open-source developers, and researchers, and separate production evidence, pilot experience, and expectations. Report the number answering each question and retain “not applicable” and “don't know” responses. Avoid publishing small identifiable subgroups or identifiable free-text responses. Survey findings are input to the BoF discussion, not a determination of IETF consensus or proof that a new working group is required.
