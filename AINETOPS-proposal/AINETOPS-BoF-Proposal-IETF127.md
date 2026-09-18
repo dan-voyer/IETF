@@ -89,15 +89,53 @@ The intended result is a common specification that operators can reference in pr
 
 ## Proposed working-group deliverables
 
-1. **Operational Framework and Requirements** — An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. It will identify existing mechanisms to reuse and the gaps addressed by the models. This work will proceed alongside model development rather than defer it to a future recharter.
+The work is organized into three groups: operational experience and requirements, Standards Track specifications, and operational guidance. These activities will proceed in parallel, with operational evidence and implementation feedback informing the specifications as they develop.
 
-2. **Agent Operational State and Lifecycle** — A Standards Track specification defining supported management capabilities, administrative and operational state, and lifecycle management of network-management agents. YANG is the leading candidate for the data model, with the choice evaluated against operator requirements and implementation experience. The specification will include at least one mandatory interoperable binding to an existing protocol. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
+### 1. Operational experience and requirements
 
-3. **Agent Task Supervision and Intervention** — A Standards Track specification defining data models, operations, notifications, and required behavior for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination. It will define intervention acknowledgements and outcomes, including incomplete or continuing network operations, and references that correlate tasks with resulting actions. The work will compare YANG-based management, reuse of existing task protocols, and an HTTP/JSON interface against these requirements. The specification will include at least one mandatory interoperable binding, selected during the initial work, with new definitions limited to demonstrated gaps.
+**A. Report on existing operational approaches**
 
-4. **Operational Guidance** — An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by implementation and operational experience.
+Collect and document how network operators, vendors, and open-source developers deploy or plan to use AI-based agents in network management.
 
-Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The specifications will distinguish the requested intervention, its acceptance or rejection, and its observed outcome, and report operations that remain in progress or whose outcome is unknown. They will not imply automatic rollback.
+Contributions will use a short common template covering the operational problem, deployment stage, participating components, management interfaces and boundaries, applicable policies, and experience with existing mechanisms or workarounds. Reports will distinguish production experience, trials, and planned capabilities.
+
+The collection will preserve contributors’ terminology and architectural choices without requiring a unified taxonomy. Inclusion does not imply working-group endorsement.
+
+**B. Survey of operational experience and needs**
+
+Use the initial reports in 1.A and existing survey work to develop and refine a structured questionnaire for broader participation by network operators, vendors, and open-source developers.
+
+The survey will collect comparable responses about deployments, plans, supervision mechanisms, integration difficulties, and unmet needs. It will distinguish observed problems from anticipated needs and capture cases where existing mechanisms are sufficient.
+
+A summary will describe the respondent population, collection method, findings, and limitations. The reports and survey results will be maintained as supporting material; separate RFC publication is not required.
+
+**C. Operational Framework and Requirements**
+
+An Informational document defining the operational problem, roles, management boundaries, and requirements supporting the Standards Track work. Drawing on the reports and survey findings, it will identify existing mechanisms to reuse and interoperability gaps requiring additional specification.
+
+This document will develop alongside the specifications. Completion of the reports or survey is not a prerequisite for starting Standards Track work.
+
+### 2. Standards Track specifications
+
+**A. Agent Operational State and Lifecycle**
+
+A Standards Track specification defining supported management capabilities, administrative and operational state, and lifecycle management of network-management agents.
+
+YANG is the leading candidate for the data model, with the choice evaluated against operator requirements and implementation experience. The specification will include at least one mandatory interoperable binding to an existing protocol. It will reuse existing identity and access-control mechanisms and will not define general agent discovery or internal AI-model management.
+
+**B. Agent Task Supervision and Intervention**
+
+A Standards Track specification defining data models, operations, notifications, and required behavior for task scope and constraints, progress and outcome reporting, approval, suspension, resumption, and termination.
+
+It will distinguish an intervention request, its acceptance or rejection, and its observed effect. It will report associated network operations that have completed, remain in progress, have failed, or have unknown outcomes, and provide references correlating tasks with resulting actions and network changes.
+
+The work will evaluate YANG-based management, reuse of existing task protocols, and an HTTP/JSON interface against the requirements. The specification will include at least one mandatory interoperable binding selected during the initial work. New definitions will be limited to demonstrated interoperability gaps.
+
+### 3. Operational guidance
+
+An Informational document covering least privilege, human oversight, failure containment, recovery, auditability, and incremental deployment, informed by operational reports, survey findings, and implementation experience.
+
+The guidance will explain how to apply the supervision mechanisms defined in Group 2, including their limitations. Suspending or terminating an agent task does not necessarily stop or reverse a network operation already accepted by a tool or controller. The guidance will address continuing operations and uncertain outcomes without implying automatic rollback.
 
 The initial charter includes Standards Track specifications for agent operational state and lifecycle, and for task supervision and intervention. The choice of data-model language and protocol binding will be evaluated separately for each deliverable, without deferring standards work to a future recharter. AINETOPS will develop these specifications in coordination with NETMOD, NETCONF, NMOP, and relevant model-owning working groups, reusing existing models and mechanisms where applicable. Changes to existing management protocols or models owned by other working groups will be developed with those groups. New transport protocols, general-purpose agent protocols, and work beyond this agent-supervision scope require rechartering.
 
