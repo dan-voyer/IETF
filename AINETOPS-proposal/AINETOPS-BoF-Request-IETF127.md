@@ -22,7 +22,7 @@ AINETOPS proposes two Standards Track specifications at the boundary between sup
 - **Expected attendance:** 80–120
 - **Session length:** 2 hours
 - **Chair conflicts:** TBD
-- **Technology overlap:** NMOP, OPSAWG, NETCONF, NETMOD, ANIMA, BMWG, NMRG, DAWN, AGENTPROTO
+- **Technology overlap:** NMOP, OPSAWG, NETCONF, NETMOD, ANIMA, BMWG, NMRG, DAWN, AGENTPROTO, AUDIT
 - **Key participant conflicts:** TBD
 
 ## Information for the IAB and IESG
