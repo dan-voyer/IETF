@@ -11,7 +11,7 @@
 **BoF chairs:** TBD; to be appointed by the responsible AD  
 **Expected attendance:** 80–120 people  
 **Session length:** 2 hours  
-**Conflicts to avoid:** NMOP, OPSAWG, NETCONF, NETMOD, ANIMA, BMWG, NMRG, DAWN, and AGENTPROTO  
+**Conflicts to avoid:** NMOP, OPSAWG, NETCONF, NETMOD, ANIMA, BMWG, NMRG, DAWN, AGENTPROTO, and AUDIT  
 **Area Director support:** To be confirmed before submission
 
 ## Information for the IAB and IESG
@@ -196,6 +196,6 @@ Before submission:
 - Confirm AD support and the submission path with Mahesh.
 - Identify credible chair candidates privately for consideration by the AD.
 - Confirm at least two named operator or implementer presenters with deployment experience.
-- Coordinate with proponents of related security and agent work, including AUDIT. The AUDIT BoF request was declined; it is not a scheduling conflict or an established WG dependency.
+- Coordinate with proponents of related security and agent work, including AUDIT. The AUDIT BoF request was resubmitted for IETF 127 and is included as a scheduling conflict; AINETOPS does not depend on the formation of an AUDIT working group.
 - Confirm candidate-model authors and implementers for the two Standards Track work items, and coordinate ownership with the relevant chairs and ADs.
 - Confirm the expected attendance and session-conflict list.
