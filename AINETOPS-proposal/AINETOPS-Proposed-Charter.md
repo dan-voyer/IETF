@@ -1,3 +1,12 @@
+# OUTDATED DRAFT — PLEASE READ THE BoF PROPOSAL
+
+> [!WARNING]
+> **This proposed charter is outdated and does not reflect the latest AINETOPS proposal.** Work has focused on developing and refining the [AINETOPS BoF proposal for IETF 127](AINETOPS-BoF-Proposal-IETF127.md), rather than keeping this charter synchronized.
+>
+> Please use the **BoF proposal** as the current reference for the proposed scope, deliverables, and discussion. The charter below is retained for historical context; its scope, deliverables, and milestones should not be treated as the current proposal.
+
+---
+
 # AI-enabled Network Operations (AINETOPS) Working Group Charter
 
 **Area:** Operations and Management
