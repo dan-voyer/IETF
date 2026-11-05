@@ -6,11 +6,11 @@
 
 ## 1. Why bring the work together?
 
-AINETOPS and ICON address overlapping parts of agent-based network management. AINETOPS work includes agent lifecycle management and the exchange of tasks, results, and supporting evidence across management systems. ICON focuses on observing agent activity, controlling permitted actions, and intervening during execution. Both need consistent descriptions of task scope, progress, constraints, and outcomes.
+An operator needs to know what an agent has been asked to do, which limits apply, what it has actually done, and whether it can be stopped when necessary. AINETOPS and ICON approach these questions from different directions. AINETOPS emphasizes task exchange and the operational management of agents; ICON emphasizes observing and controlling their behavior, including intervention when an agent cannot be relied on to respond. These responsibilities involve distinct interfaces, but share information about tasks, constraints, actions, and results.
 
-The connection becomes clear when an operator stops a task that has already initiated a network change. The system handling the task and the system supervising it need to identify the same operation, understand what has happened, and report what remains in progress. Developing those definitions separately could produce incompatible interfaces and duplicate work.
+Both efforts address aspects of task progress, human oversight, and intervention. For example, when an operator asks to stop a task that has already initiated a network change, the system handling the task and the system supervising it need to identify the same operation, understand what has happened, and report what remains in progress. Different terminology should not lead to incompatible definitions of these shared concepts.
 
-We propose a common working group to develop these related interfaces together. It would combine task interoperability and agent lifecycle management with observability, control, and intervention. The initial scope below selects work from both efforts; it does not include every requirement in the current drafts.
+We propose developing this shared information and the related interfaces in one working group while preserving the separation between task execution and independent supervision. Agent lifecycle management and supervision during execution would remain distinct parts of the work. The initial scope below selects work from both efforts; it does not include every requirement in the current drafts.
 
 The proponents will discuss placement with the relevant Area Directors, NMOP, and OPSAWG. Existing groups remain possible homes for parts of the work. The reason to consider a common group is to keep the related specifications consistent throughout development and implementation.
 
@@ -31,11 +31,11 @@ The initial work will cover:
 
 Tasks will identify their objectives, target resources, constraints, and completion criteria. Results will distinguish completion of an analysis, execution of a change, and achievement of the operational objective. Supporting evidence will identify the relevant inputs, time or state revision, checks performed, and limitations.
 
-Operational management will cover agent capabilities and lifecycle state, activity reporting, operating constraints, and task supervision. Intervention will include approval, restriction, suspension, resumption, and termination where supported. Specifications will identify where controls are enforced, including when an agent is unresponsive.
+Agent lifecycle management will cover capabilities and operational state, including onboarding, enablement, and retirement. Runtime supervision will cover activity reporting, operating constraints, and intervention. Intervention will include approval, restriction, suspension, resumption, and termination where supported. Specifications will distinguish controls on an individual task from controls on the agent itself, and identify where those controls are enforced. The work will support supervision and enforcement that do not depend on the executing agent responding.
 
 An accepted intervention request does not establish that its intended effect occurred. Reports will distinguish acceptance, enforcement, and observed effects, including partial or unknown outcomes. Stopping an agent task does not automatically stop a controller operation or reverse a completed network change. Recovery actions require appropriate authorization and separate reporting.
 
-The work will use consistent definitions across these interfaces while allowing different encodings and domain-specific extensions.
+The work will use consistent identifiers and definitions across these interfaces while allowing separate components, data models, encodings, and domain-specific extensions.
 
 ### Deliverables
 
@@ -45,7 +45,7 @@ The work will use consistent definitions across these interfaces while allowing 
 
 3. **Network-management skill interface profiles — Standards Track.** Define how a caller identifies and uses the supported inputs, outputs, and evidence formats of an operation exposed by an agent. Cover interface versions, compatibility, and machine-readable errors using existing communication and schema mechanisms.
 
-4. **Agent lifecycle, observability, control, and intervention — Standards Track.** Define YANG models, operations, and notifications for agent operational state and lifecycle, activity reporting, constraints, supervision, and intervention outcomes. Specify their use with NETCONF or RESTCONF and existing notification mechanisms, reusing the task and evidence definitions.
+4. **Agent lifecycle, observability, control, and intervention — Standards Track.** Define YANG models, operations, and notifications for agent operational state and lifecycle, activity reporting, constraints, supervision, and intervention outcomes. Distinguish lifecycle management from runtime supervision; these functions may be specified in separate modules. Specify their use with NETCONF or RESTCONF and existing notification mechanisms, reusing the task and evidence definitions.
 
 Document boundaries may be adjusted within this scope. The specifications will define conformance requirements and error behavior. Implementation work will test interoperability across the interfaces.
 
@@ -80,3 +80,4 @@ The following are inputs for discussion; their inclusion does not imply adoption
 
 - AINETOPS: [problem statement](https://datatracker.ietf.org/doc/draft-rqd-ainetops-problem-statement/), [task and evidence model](https://datatracker.ietf.org/doc/draft-sun-ainetops-task-and-evidence-model/), and [skill schema interfaces](https://datatracker.ietf.org/doc/draft-huang-ainetops-agent-schema-interfaces/).
 - ICON: [problem statement](https://datatracker.ietf.org/doc/draft-wnd-opsawg-icon-ps/) and [architecture and requirements](https://datatracker.ietf.org/doc/draft-mcw-opsawg-icon-requirements/).
+
