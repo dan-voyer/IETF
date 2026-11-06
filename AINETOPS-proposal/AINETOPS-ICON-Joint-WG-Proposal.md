@@ -1,6 +1,6 @@
 # AINETOPS and ICON: Proposal for a Common Working Group
 
-5 November 2026
+6 November 2026
 
 > **For discussion with AINETOPS and ICON participants.** This proposal does not represent community or IETF consensus. The working group name and document adoption remain open.
 
@@ -8,30 +8,13 @@
 
 An operator needs to know what an agent has been asked to do, which limits apply, what it has actually done, and whether it can be stopped when necessary. AINETOPS and ICON approach these questions from different directions. AINETOPS emphasizes task exchange and the operational management of agents; ICON emphasizes observing and controlling their behavior, including intervention when an agent cannot be relied on to respond. These responsibilities involve distinct interfaces, but share information about tasks, constraints, actions, and results.
 
-Both efforts address aspects of task progress, human oversight, and intervention. For example, when an operator asks to stop a task that has already initiated a network change, the system handling the task and the system supervising it need to identify the same operation, understand what has happened, and report what remains in progress. Different terminology should not lead to incompatible definitions of these shared concepts.
+The overlap becomes clear when an operator asks to stop a task that has already initiated a network change. The systems executing and supervising the task need to identify the same operation, understand what has happened, and report what remains in progress. Observation continues during execution; intervention is used when needed. Recovery, including rollback where supported, requires appropriate authorization.
 
-We propose developing this shared information and the related interfaces in one working group while preserving the separation between task execution and independent supervision. Agent lifecycle management and supervision during execution would remain distinct parts of the work. The initial scope below selects work from both efforts; it does not include every requirement in the current drafts.
+In a multi-vendor deployment, one system may request a task, another agent or controller may execute it, and a third system may provide independent supervision. These systems need consistent identifiers and meanings for task state, constraints, evidence, errors, and outcomes. Separate specifications can meet this need when they share definitions; the risk is inconsistent definitions developed without sufficient coordination.
 
-The proponents will discuss placement with the relevant Area Directors, NMOP, and OPSAWG. Existing groups remain possible homes for parts of the work. The reason to consider a common group is to keep the related specifications consistent throughout development and implementation.
+We propose a common working group to develop these related interfaces together and reduce that risk. It can develop consistent interfaces while preserving separate components and trust boundaries. Task execution, agent lifecycle management, and independent supervision would remain distinct responsibilities. The initial scope below selects work from both efforts; it does not include every requirement in the current drafts.
 
-The case for bringing the work together is stronger than terminology alignment. Task execution, observation, intervention, and outcome reporting form an operational chain. An implementation must be able to correlate the task, the responsible agent, affected resources, management operations, observed effects, and any intervention across that chain. If these concepts are standardized independently, implementations would need additional mappings between identifiers, state models, evidence, error semantics, and control operations.
-
-A common working group can define these shared semantics once while preserving architectural separation between execution and independent oversight. This is particularly important in multi-vendor environments, where one system may request a task, another agent or controller may execute it, and a third system may provide independent supervision.
-Safety and failure handling are also end-to-end properties. An intervention cannot be interpreted correctly without knowing which task and downstream operation it affects, and which effects have already occurred. Conversely, task execution cannot be considered operationally controllable unless external supervision can identify and constrain the relevant activity. Developing these mechanisms together reduces the risk of incompatible state machines and ambiguous failure semantics.
-
-The reason to consider a common working group is not merely coordination efficiency. The specifications share operational semantics and must interoperate across task execution, observation, intervention, and outcome reporting. Developing them together reduces the risk that incompatible identifiers, state models, or control semantics become embedded in implementations before they can be reconciled.
-
-One working group does not imply one protocol, one component, or one trust domain. The objective is shared semantics and interoperable interfaces, not (only) architectural consolidation.
-
-Main arguments:
-
-1. End-to-End operational chain (Task → Execution → Observation → Intervention → Outcome)
-2. Common identifiers/state semantics (Otherwise, task, operation, agent, resource and intervention cannot be reliably correlated)
-3. Saftey/failure semantics (Stop, suspend, rollback and observed effect must match the actual execution state.)
-4. Multi-vendor interoperability (Requester, agent/controller and supervisor can come from different manufacturers)
-5. Avoid implementation seams (Two separate standards merely shift the necessary integration from the IETF to the implementer)
- 
-AINETOPS and ICON address different control points of the same operational lifecycle; standardizing them separately risks creating incompatible semantics exactly at the boundary where safe multi-vendor automation requires them to interoperate.
+The proponents will discuss placement with the relevant Area Directors, NMOP, and OPSAWG. Existing groups remain possible homes for parts of the work.
 
 ## 2. Proposed charter
 
@@ -97,6 +80,5 @@ These are discussion targets relative to charter approval; calendar dates will b
 
 The following are inputs for discussion; their inclusion does not imply adoption:
 
-- AINETOPS: [problem statement](https://datatracker.ietf.org/doc/draft-rqd-ainetops-problem-statement/), [task and evidence model](https://datatracker.ietf.org/doc/draft-sun-ainetops-task-and-evidence-model/), [skill schema interfaces](https://datatracker.ietf.org/doc/draft-huang-ainetops-agent-schema-interfaces/)，and [agent lifecycle management](https://datatracker.ietf.org/doc/draft-sun-nmop-agent-lifecycle-management/).
+- AINETOPS: [problem statement](https://datatracker.ietf.org/doc/draft-rqd-ainetops-problem-statement/), [task and evidence model](https://datatracker.ietf.org/doc/draft-sun-ainetops-task-and-evidence-model/), [skill schema interfaces](https://datatracker.ietf.org/doc/draft-huang-ainetops-agent-schema-interfaces/), and [agent lifecycle management](https://datatracker.ietf.org/doc/draft-sun-nmop-agent-lifecycle-management/).
 - ICON: [problem statement](https://datatracker.ietf.org/doc/draft-wnd-opsawg-icon-ps/) and [architecture and requirements](https://datatracker.ietf.org/doc/draft-mcw-opsawg-icon-requirements/).
-
